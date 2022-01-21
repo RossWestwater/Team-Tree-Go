@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.17.2",
+    "inquirer": "^8.2.0",
+    "jest": "^27.4.7",
+    "mysql2": "^2.3.3"
+  }
+}
