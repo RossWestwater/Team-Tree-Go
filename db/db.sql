@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS teamRoster_db;
-CREATE DATABASE teamRoster_db;
-USE DATABASE teamRoster_db;
+DROP DATABASE IF EXISTS teamroster_db;
+CREATE DATABASE teamroster_db;
+USE teamroster_db;
