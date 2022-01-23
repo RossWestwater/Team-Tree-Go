@@ -1,36 +1,22 @@
+DROP DATABASE IF EXISTS teamroster_db;
+CREATE DATABASE teamroster_db;
+USE teamroster_db;
 
-SELECT
-  employee.id, employee.first_name, employee.last_name, 
-  role.title AS job_title, role.salary, CONCAT(manager.first_name, " " ,manager.last_name) AS manager
-FROM employee
-LEFT JOIN role ON employee.role_id = role.id
-LEFT JOIN department ON role.department_id = department.id
-LEFT JOIN employee manager ON manager.id = employee.manager_id;
--- manager is defined in the join statement 'employee manager'.
+DROP TABLE IF EXISTS department, role, employee;
 
+CREATE TABLE department (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(30) NOT NULL
+);
 
-SELECT
-  employee.id AS employee_id, employee.first_name AS first_name, employee.last_name AS last_name, 
-  role.title AS job_title, role.salary AS salary, department.name AS department, employee.manager_id as manager
-FROM employee
-LEFT JOIN role ON employee.role_id = role.id
-LEFT JOIN department ON role.department_id = department.id
-LEFT JOIN employee manager ON manager_id = employee.id;
-
-
-
-FROM role
-JOIN department ON role.department_id = department.id;
-
-THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-WHEN I choose to add a department
-
-SELECT
-  -- Select the columns from both tables --
-  books.book_name AS book_name, prices.price AS price
-FROM books
-  -- Defines relationship between two tables --
-JOIN prices ON books.price = prices.id;
+CREATE TABLE role (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR(30) NOT NULL,
+  salary DECIMAL(8,2) NOT NULL,
+  department_id INTEGER NOT NULL,
+  FOREIGN KEY (department_id)
+  REFERENCES department(id)
+);
 
 CREATE TABLE employee (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -43,12 +29,48 @@ CREATE TABLE employee (
   ON DELETE SET NULL,
   FOREIGN KEY (role_id)
   REFERENCES role(id)
-
-  CREATE TABLE role (
-  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  title VARCHAR(30) NOT NULL,
-  salary DECIMAL(8,2) NOT NULL,
-  department_id INTEGER NOT NULL,
-  FOREIGN KEY (department_id)
-  REFERENCES department(id)
 );
+
+INSERT INTO department (name)
+VALUES 
+  ('Customer Service'), 
+  ('Claims'),  
+  ('Development'), 
+  ('Human Resources')
+  ;
+
+INSERT INTO role (title, salary, department_id)
+VALUES 
+  ('Service Manager', 70000.00, 1),
+  ('Service Rep', 38000.00, 1),
+  ('Claims Manager', 70000.00, 2),
+  ('Claims Rep', 40000.00, 2),
+  ('Software Manager', 150000.00, 3),
+  ('Software Engineer', 75000.00, 3),
+  ('HR Manager', 100000.00, 4),
+  ('HR Rep', 50000.00, 4)
+;
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES 
+  ('Stacy', 'Winsky', 1, NULL),
+  ('Jordan', 'Smith', 2, 1),
+  ('Anthony', 'Wielding', 3, NULL),
+  ('Alexis', 'Bastion', 4, 3),
+  ('Alison', 'Temurc', 5, NULL),
+  ('Trevor', 'Chang', 6, 5),
+  ('Kiera', 'Westwater', 7, NULL),
+  ('Ross', 'Westwater', 8, 7),
+  ('Brody', 'Maxwell', 2, 1),
+  ('Sean', 'Maxwell', 4, 3),
+  ('Bobby', 'Shelton', 6, 5)
+;
+
+-- SELECT
+--   employee.id, employee.first_name, employee.last_name, 
+--   role.title AS job_title, role.salary, CONCAT(manager.first_name, " " ,manager.last_name) AS manager
+-- FROM employee
+-- LEFT JOIN role ON employee.role_id = role.id
+-- LEFT JOIN department ON role.department_id = department.id
+-- LEFT JOIN employee manager ON manager.id = employee.manager_id;
+-- -- manager is defined in the join statement 'employee manager'.

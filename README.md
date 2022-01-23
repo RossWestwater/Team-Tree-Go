@@ -1,20 +1,15 @@
 # Team-Tree-Go
 
-GIVEN a command-line application that accepts user input
+## Description
+Team-Tree-Go is a simple app designed for tracking and organizing members of a team through mysql based relationships. It is useful for quickly referencing various data points through queries via the Inquirer npm. I used the console-table-printer library instead of the console.table() method to display information b/c all the green of the console.table was hurting my eyes...
 
-WHEN I start the application
-THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-WHEN I choose to view all departments
-THEN I am presented with a formatted table showing department names and department ids
-WHEN I choose to view all roles
-THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-WHEN I choose to view all employees
-THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-WHEN I choose to add a department
-THEN I am prompted to enter the name of the department and that department is added to the database
-WHEN I choose to add a role
-THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
-WHEN I choose to add an employee
-THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-WHEN I choose to update an employee role
-THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+## Installation
+In order to use this app, the user must:
+
+Clone the repo containing the app Install Node.js on their computer via the LTS link (https://nodejs.org/en/) Run the 'npm i' command in their terminal from the correct root folder location of the cloned repo to sync the depndencies, run the app using the 'node index' command from the same root folder as the cloned repo. The user may then follow the prompts to view or add/update data, as they see fit.
+
+## Usage
+Please refer to the following link for a walkthrough demonstrating the usage of this app:
+
+## Badges
+![image of Node.js badge](https://img.shields.io/badge/Node.js-100%25-blue)
