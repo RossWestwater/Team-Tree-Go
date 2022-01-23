@@ -10,6 +10,7 @@ Clone the repo containing the app Install Node.js on their computer via the LTS 
 
 ## Usage
 Please refer to the following link for a walkthrough demonstrating the usage of this app:
+https://www.awesomescreenshot.com/video/6988981?key=248af8cb37da22100f8ec41e6a664efb
 
 ## Badges
 ![image of Node.js badge](https://img.shields.io/badge/Node.js-100%25-blue)
